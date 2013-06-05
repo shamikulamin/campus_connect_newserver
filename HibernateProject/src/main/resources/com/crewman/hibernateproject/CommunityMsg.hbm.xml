@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 3, 2013 12:09:11 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.crewman.hibernateproject.CommunityMsg" table="community_msg" catalog="campus_connect">
+        <id name="commMsgId" type="java.lang.Integer">
+            <column name="comm_msg_id" />
+            <generator class="identity" />
+        </id>
+        <property name="msgTitle" type="string">
+            <column name="msg_title" length="100" />
+        </property>
+        <property name="msgDescription" type="string">
+            <column name="msg_description" length="1000" />
+        </property>
+        <property name="reportingTime" type="timestamp">
+            <column name="reporting_time" length="19" not-null="true" />
+        </property>
+        <property name="latlong" type="string">
+            <column name="latlong" length="1000" />
+        </property>
+        <property name="msgType" type="string">
+            <column name="msg_type" length="100" />
+        </property>
+        <property name="expiryTime" type="timestamp">
+            <column name="expiry_time" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 3, 2013 12:09:11 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.crewman.hibernateproject.IncidentMsg" table="incident_msg" catalog="campus_connect">
+        <id name="incidentId" type="java.lang.Integer">
+            <column name="incident_id" />
+            <generator class="identity" />
+        </id>
+        <property name="msgTitle" type="string">
+            <column name="msg_title" length="100" />
+        </property>
+        <property name="msgDescription" type="string">
+            <column name="msg_description" length="1000" />
+        </property>
+        <property name="reportingTime" type="timestamp">
+            <column name="reporting_time" length="19" not-null="true" />
+        </property>
+        <property name="latlong" type="string">
+            <column name="latlong" length="100" />
+        </property>
+        <set name="incidentPictures" inverse="true">
+            <key>
+                <column name="incident_id" />
+            </key>
+            <one-to-many class="com.crewman.hibernateproject.IncidentPicture" />
+        </set>
+    </class>
+</hibernate-mapping>

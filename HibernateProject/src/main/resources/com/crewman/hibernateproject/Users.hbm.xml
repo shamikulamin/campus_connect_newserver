@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 3, 2013 12:09:11 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.crewman.hibernateproject.Users" table="users" catalog="campus_connect">
+        <id name="username" type="string">
+            <column name="username" length="40" />
+            <generator class="assigned" />
+        </id>
+        <property name="pswd" type="string">
+            <column name="pswd" length="40" />
+        </property>
+    </class>
+</hibernate-mapping>
