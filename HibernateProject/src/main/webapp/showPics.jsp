@@ -61,7 +61,9 @@
             
             <%
                 i++;
-            }%>
+            }
+            db.destroySession();
+            %>
         </ul>
         
         </div>
