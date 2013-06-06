@@ -192,25 +192,9 @@ public class DBHelper {
     public void insertCommunityMessage(CommunityMsg msg){
         try{
             Transaction tx = this.getSession().beginTransaction();
-            String query = "insert into CommunityMsg(msgTitle, "
-                + "msgDescription,reportingTime,latlong,msgType,expiryTime)"
-                + "select msg.msgTitle, msg.msgDescription, msg.reportingTime,"
-                + "msg.latlong,msg.msgType,msg.expiryTime "
-                + "from CommunityMsg msg";
-        
-            String sqlQuery = "insert into community_msg(msg_title,"
-                + "msg_description, reporting_time, latlong, msg_type, expiry_time)"
-                + "VALUES(:a,:b,:c,:d,:e,:f)";
-            Query q = this.getSession().createSQLQuery(sqlQuery);
-            q.setString("a", msg.getMsgTitle());
-            q.setString("b", msg.getMsgDescription());
-            q.setTimestamp("c", msg.getReportingTime());
-            q.setString("d", msg.getLatlong());
-            q.setString("e", msg.getMsgType());
-            q.setTimestamp("f", msg.getExpiryTime());
-            int createdEntities = q.executeUpdate();
-            tx.commit();
-            System.out.println("Num rows created: "+createdEntities);
+            this.getSession().saveOrUpdate(msg);
+            tx.commit(); 
+           
         }
         catch(Exception e){
             System.out.println("Exception caught: "+e.getMessage());

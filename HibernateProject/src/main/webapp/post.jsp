@@ -167,8 +167,14 @@
             
             <tr bgcolor="#b0c4de">
                 <td valign=top><b>Message Text<sup>*</sup></b> <br>
-                    <textarea name="message" cols="40" rows="5">Enter your message here...
+                    <textarea name="message" cols="40" rows="5">Enter your message
                     </textarea>
+                </td>
+            </tr>
+            <br>
+            <tr bgcolor="#b0c4de">
+                <td align=center colspan=2><hr>
+                   <INPUT TYPE=CHECKBOX NAME="push">Would you like to push?<P>
                 </td>
             </tr>
             
