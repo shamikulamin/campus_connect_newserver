@@ -36,17 +36,11 @@ public class DBHelper {
     }
     public List<Devices> getDevices(){
         this.getSession().beginTransaction();
-        List<Devices> result = null;
-        List<Devices> messages = null;
         String query = "from Devices";
         Query q = this.getSession().createQuery(query);
-        messages = (List<Devices>) q.list();
-        result = new ArrayList<Devices>(messages.size());
-        for(int i=0; i < messages.size(); i++){
-            result.add((Devices) messages.get(i));
-        }
-        System.out.println("Result Size: "+result.size());
-        return result;
+        
+        List<Devices> avDevices = (List<Devices>) q.list();
+        return avDevices;
     }
     //UPDATE devices SET regID='"+canonicalRegId+"' WHERE regID='"+devices.get(i)+"'"
     public void updateDevice(String canonicalRegId, String oldRegId){
@@ -218,20 +212,12 @@ public class DBHelper {
     }
     public List<IncidentMsg> getIncidentMessages(){
         this.getSession().beginTransaction();
-        List<IncidentMsg> result = null;
-        List<IncidentMsg> messages = null;
         String query = "from IncidentMsg";
         Query q = this.getSession().createQuery(query);
-        messages = (List<IncidentMsg>) q.list();
-        result = new ArrayList<IncidentMsg>(messages.size());
-        for(int i=0; i < messages.size(); i++){
-            result.add((IncidentMsg) messages.get(i));
-        }
-        System.out.println("Result Size: "+result.size());
-        for(int i=0; i < 10; i++)
-            System.out.println(result.get(i));
-        return result;
+        List<IncidentMsg> messages = (List<IncidentMsg>) q.list();
+        return messages;
     }
+    
     public List<IncidentPicture> getPictures(Integer id){
         this.getSession().beginTransaction();
         List<IncidentPicture> result = null;

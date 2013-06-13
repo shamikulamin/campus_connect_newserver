@@ -24,7 +24,7 @@
             var locations = new Array();
             //var locations = new  Array();
             function initialize() {
-            var myLatlng = new google.maps.LatLng(32.704111,-97.141571);
+            var myLatlng = new google.maps.LatLng(32.730500,-97.113047);
             var myOptions = {
                 zoom: 16,
                 center: myLatlng,

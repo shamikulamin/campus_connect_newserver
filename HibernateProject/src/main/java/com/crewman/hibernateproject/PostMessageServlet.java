@@ -159,6 +159,7 @@ public class PostMessageServlet extends HttpServlet {
 			Message message = new Message.Builder().addData("title", alertTitle).addData("msgType",msgType).addData("msgID",Integer.toString(iMsgID)).build();
 			MulticastResult result = sender.send(message, devices, 5);
 			System.out.println( result.getSuccess()+" notifications successfully sent");
+                        DBHelper db = new DBHelper();
 						
 			for (int i = 0; i < result.getTotal(); i++) 
                         {
@@ -168,9 +169,7 @@ public class PostMessageServlet extends HttpServlet {
                             {
                                 String canonicalRegId = r.getCanonicalRegistrationId();
                                 if (canonicalRegId != null) {
-                                // TODO-- use appropriate methods from DBHelper and test.   
-                                // devices.get(i) has more than one registration ID: update database
-                                   // st.executeUpdate("UPDATE devices SET regID='"+canonicalRegId+"' WHERE regID='"+devices.get(i)+"'");
+                                    db.updateDevice(canonicalRegId,devices.get(i));                                
                                 }
                             } 
                             else 
@@ -178,11 +177,8 @@ public class PostMessageServlet extends HttpServlet {
                                 String error = r.getErrorCodeName();
                                 if (error.equals(Constants.ERROR_NOT_REGISTERED)) 
                                 {
-                                                                 
-                               // TODO-- use appropriate methods from DBHelper and test.   
-
-                                    // application has been removed from devices.get(i) - unregister database
-                                    //st.executeUpdate("DELETE FROM devices WHERE regID='"+devices.get(i)+"'");
+                                    db.deleteDevice(devices.get(i));                                                               
+                              
                                 }
                             }
                         }
